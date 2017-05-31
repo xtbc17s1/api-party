@@ -2,26 +2,32 @@ import React, { Component } from 'react'
 
 class Calculator extends Component {
     state = {
+        expression: '',
         answer: ''
     }
 
-    constructor(props){
-        super(props)
-        this.fetchCalculation()
-    }
-
-    fetchCalculation() {
-        fetch('https://newton.now.sh/simplify/2+2')
+    fetchCalculation = (ev) => {
+        ev.preventDefault()
+        const expression = this.state.expression
+        fetch(`https://newton.now.sh/simplify/${expression}`)
             .then(response => response.json())
             .then(answer => this.setState({answer: answer.result}))
+    }
+
+    handleChange = (ev) => {
+        const expression = ev.currentTarget.value
+        this.setState({ expression })
     }
 
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.fetchCalculation}>
                     <div>
-                        <input type="text"/>
+                        <input 
+                            type="text" 
+                            value={this.state.expression} 
+                            onChange={this.handleChange} />
                     </div>
                     <div>
                         <button type="submit">Calculate Expression!</button>
