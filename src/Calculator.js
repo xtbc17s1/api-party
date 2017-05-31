@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import './Calculator.css'
+
 class Calculator extends Component {
     state = {
         expression: '',
@@ -22,6 +24,7 @@ class Calculator extends Component {
     render() {
         return (
             <div>
+                <h3>Enter an expression (eg 3-(5^2)) and see the answer!</h3>
                 <form onSubmit={this.fetchCalculation}>
                     <div>
                         <input 
@@ -33,7 +36,7 @@ class Calculator extends Component {
                         <button type="submit">Calculate Expression!</button>
                     </div>
                 </form>
-                <h2>{this.state.answer}</h2>
+                <h2>{this.state.expression} = {this.state.answer}</h2>
             </div>
         )
     }
