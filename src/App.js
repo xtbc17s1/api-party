@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom'
 import Github from './Github'
 import Nasa from './Nasa'
-import Homework from './Homework'
 import Calculator from './Calculator'
 import './App.css';
 
